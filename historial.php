@@ -43,10 +43,18 @@ $result = mysqli_query($conexion, $sql);
             -moz-user-select: none;
             user-select: none;
         }
+/* 
+        .cover-container_ {
+            max-width: 80% !important;
+        } */
 
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
+            }
+
+            .mobile {
+                max-width: 100% !important;
             }
         }
 
@@ -86,10 +94,6 @@ $result = mysqli_query($conexion, $sql);
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
-
-        .cover-container {
-            max-width: 80% !important;
-        }
     </style>
 
 
@@ -104,7 +108,7 @@ $result = mysqli_query($conexion, $sql);
 
 <body class="d-flex h-100 text-center text-bg-white">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container_ mobile d-flex w-100 h-100 p-3 flex-column">
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">Historial - Prueba Tecnica</h3>
@@ -118,54 +122,57 @@ $result = mysqli_query($conexion, $sql);
         <h1>Open Weathermap Historial</h1>
 
         <div class="mt-4">
-            <table id="respHistorial" class="display bg-dark text-white">
-                <thead>
-                    <tr>
-                        <th>Ciudad</th>
-                        <th>País</th>
-                        <th>Latitud</th>
-                        <th>Longitud</th>
-                        <th>Humedad</th>
-                        <th>Temperatura</th>
-                        <th>Viento</th>
-                        <th>Fecha registro</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($row = mysqli_fetch_array($result)) {
-                    ?>
-                    <tr>
-                        <td>
-                            <?= $row['nombreCiudad'] ?>
-                        </td>
-                        <td>
-                            <?= $row['pais'] ?>
-                        </td>
-                        <td>
-                            <?= $row['latitud'] ?>
-                        </td>
-                        <td>
-                            <?= $row['longitud'] ?>
-                        </td>
-                        <td>
-                            <?= $row['humedad'] ?>
-                        </td>
-                        <td>
-                            <?= $row['temperatura'] ?>
-                        </td>
-                        <td>
-                            <?= $row['viento'] ?>
-                        </td>
-                        <td>
-                            <?= $row['fechaRegistro'] ?>
-                        </td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+
+                <table id="respHistorial" class="table display bg-dark text-white">
+                    <thead>
+                        <tr>
+                            <th>Ciudad</th>
+                            <th>País</th>
+                            <th>Latitud</th>
+                            <th>Longitud</th>
+                            <th>Humedad</th>
+                            <th>Temperatura</th>
+                            <th>Viento</th>
+                            <th>Fecha registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                        <tr>
+                            <td>
+                                <?= $row['nombreCiudad'] ?>
+                            </td>
+                            <td>
+                                <?= $row['pais'] ?>
+                            </td>
+                            <td>
+                                <?= $row['latitud'] ?>
+                            </td>
+                            <td>
+                                <?= $row['longitud'] ?>
+                            </td>
+                            <td>
+                                <?= $row['humedad'] ?>
+                            </td>
+                            <td>
+                                <?= $row['temperatura'] ?>
+                            </td>
+                            <td>
+                                <?= $row['viento'] ?>
+                            </td>
+                            <td>
+                                <?= $row['fechaRegistro'] ?>
+                            </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <footer class="mt-auto text-dark-50">
